@@ -26,7 +26,7 @@ public class Main {
 
             System.out.println();
             while(true) {
-                System.out.print("Continue? Y/N ");
+                System.out.print("Restart? Y/N ");
                 String response = reader.nextLine();
                 if (response.equals("N") || response.equals("n")) {
                     break running;
