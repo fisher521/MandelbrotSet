@@ -1,10 +1,10 @@
 /**
  * MandelbrotChecker
  *
- * Checks how many iterations it takes for a complex number to escape the Mandelbrot Set.
+ * A class that checks how many iterations it takes for a complex number to escape the Mandelbrot Set.
  *
  * @author Fisher
- * @version 10/31/18
+ * @version 11/03/18
  */
 class MandelbrotChecker {
     static void main(double a, double b, int maxIterations) {
@@ -16,7 +16,7 @@ class MandelbrotChecker {
 
         double oldOutputA, oldOutputB;
 
-        while (checkMagnitude(outputA, outputB) <= 2 && iterations < maxIterations) {
+        while (checkMagnitude(outputA, outputB) < 2 && iterations < maxIterations) {
             oldOutputA = outputA;
             oldOutputB = outputB;
 
@@ -27,10 +27,15 @@ class MandelbrotChecker {
             printInfo(outputA,outputB,iterations);
         }
 
-        if (checkMagnitude(outputA,outputB) > 2) {
-            System.out.println("Escaped at " + iterations + " iterations");
+        if (checkMagnitude(outputA,outputB) >= 2 && iterations != 1) {
+            System.out.println("\nEscaped at " + iterations + " iterations.");
+        }
+        if (checkMagnitude(outputA,outputB) >= 2 && iterations == 1) {
+            System.out.println("\nEscaped at " + iterations + " iteration.");
         }
     }
+
+    //(a+bi)^2 + c = (a^2 - b^2) + (ab + ab)i + c
     private static double iterateA(double a, double b, double c) {
         return (a * a - b * b) + c;
     }
@@ -41,9 +46,7 @@ class MandelbrotChecker {
         return Math.sqrt(a*a + b*b);
     }
     private static void printInfo(double a, double b, int iterations) {
-        System.out.println();
-        System.out.println("ITERATION " + iterations);
-        //test 0,1
+        System.out.println("\nITERATION " + iterations);
         if (b < 0) {
             System.out.println (a + "-" + b * -1 + "i");
         }

@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Main class of the Mandelbrot set program.
  *
  * @author Fisher
- * @version 10/31/18
+ * @version 11/03/18
  */
 public class Main {
     public static void main(String[] args) {
@@ -24,7 +24,6 @@ public class Main {
 
             MandelbrotChecker.main(a,b, maxIterations);
 
-            System.out.println();
             while(true) {
                 System.out.print("Restart? Y/N ");
                 String response = reader.nextLine();
