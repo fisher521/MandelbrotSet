@@ -19,8 +19,9 @@ public class Main {
             a = UtilityMethods.inputDouble("no u");
             System.out.print("Enter imaginary value: ");
             b = UtilityMethods.inputDouble("no u");
-            System.out.print("Enter how many iterations to run: ");
-            maxIterations = UtilityMethods.inputInt("plz no");
+            //System.out.print("Enter how many iterations to run: ");
+            //maxIterations = UtilityMethods.inputInt("plz no");
+            maxIterations = 4;
 
             MandelbrotChecker.main(a,b, maxIterations);
 

@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  * MandelbrotChecker
  *
@@ -8,11 +9,15 @@
  */
 class MandelbrotChecker {
     static void main(double a, double b, int maxIterations) {
-
+        Scanner reader = new Scanner(System.in);
         double outputA = a;
         double outputB = b;
-        int iterations = 0;
+        int iterations = 1;
+
+        System.out.println();
         printInfo(outputA,outputB,iterations);
+
+        reader.nextLine();
 
         double oldOutputA, oldOutputB;
 
@@ -24,7 +29,9 @@ class MandelbrotChecker {
             outputB = iterateB(oldOutputA, oldOutputB, b);
 
             iterations ++;
-            printInfo(outputA,outputB,iterations);
+            printInfo(outputA,outputB, iterations);
+
+            reader.nextLine();
         }
 
         if (checkMagnitude(outputA,outputB) >= 2 && iterations != 1) {
@@ -46,13 +53,25 @@ class MandelbrotChecker {
         return Math.sqrt(a*a + b*b);
     }
     private static void printInfo(double a, double b, int iterations) {
-        System.out.println("\nITERATION " + iterations);
+        System.out.println("ITERATION " + iterations);
         if (b < 0) {
-            System.out.println (a + "-" + b * -1 + "i");
+            System.out.println (a + "-" + b*-1 + "i");
+            System.out.println("|"+ a + "-" + b*-1 + "i| = sqrt(" + a + "^2 + " + b + "^2)");
         }
         else {
             System.out.println (a + "+" + b + "i");
+            System.out.println("|"+ a + "+" + b + "i| = sqrt(" + a + "^2 + " + b + "^2)");
         }
-        System.out.println("Magnitude: " + checkMagnitude(a, b));
+        System.out.println("= sqrt(" + a*a + " + " + b*b + ")");
+        System.out.println("= sqrt(" + (a*a+b*b) + ")");
+        if (a*a+b*b > 4) {
+            System.out.println("sqrt(" + (a*a+b*b) + ") > 2");
+        }
+        else if (a*a+b*b == 4) {
+            System.out.println("sqrt(" + (a*a+b*b) + ") = 2");
+        }
+        else {
+            System.out.println("sqrt(" + (a*a+b*b) + ") < 2");
+        }
     }
 }
