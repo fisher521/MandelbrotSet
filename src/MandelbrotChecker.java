@@ -11,7 +11,7 @@ class MandelbrotChecker {
 
         double outputA = a;
         double outputB = b;
-        int iterations = 0;
+        int iterations = 1;
         printInfo(outputA,outputB,iterations);
 
         double oldOutputA, oldOutputB;
